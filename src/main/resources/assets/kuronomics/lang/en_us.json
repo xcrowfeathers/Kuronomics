@@ -48,7 +48,7 @@
   "kuronomics.protection.build_denied": "You cannot build here.",
   "block.kuronomics.job_terminal": "Job Terminal",
   "kuronomics.jobs.no_terminal": "No Job Terminal is nearby.",
-  "kuronomics.jobs.permission": "You do not have permission to manage jobs.",
+  "kuronomics.jobs.permission": "You need an active Employment Officer job or OP level 3 to do this.",
   "kuronomics.jobs.terminal": "Job Terminal",
   "kuronomics.jobs.editor": "Job Terminal Editor",
   "kuronomics.jobs.applications": "Job Applications",

@@ -181,10 +181,10 @@ public final class JobMenu extends AbstractContainerMenu {
             throw new IllegalArgumentException("Open the job details first.");
     }
     private void requireEditor(ServerPlayer player) {
-        if (kind != 1 || !JobPermissions.edit(player)) throw new IllegalArgumentException("Editor permission required.");
+        if (kind != 1 || !JobPermissions.edit(player)) throw new IllegalArgumentException("Employment Officer job or OP level 3 required.");
     }
     private void requireManager(ServerPlayer player) {
-        if (kind != 2 || !JobPermissions.manage(player)) throw new IllegalArgumentException("Application permission required.");
+        if (kind != 2 || !JobPermissions.manage(player)) throw new IllegalArgumentException("Employment Officer job or OP level 3 required.");
     }
     public void sync(ServerPlayer player) {
         if (player.containerMenu != this || !stillValid(player)) return;
