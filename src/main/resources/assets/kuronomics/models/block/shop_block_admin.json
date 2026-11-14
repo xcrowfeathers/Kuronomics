@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "kuronomics:block/shop_creative_bottom",
+    "up": "kuronomics:block/shop_creative_top",
+    "north": "kuronomics:block/shop_creative_front",
+    "east": "kuronomics:block/shop_creative_left",
+    "south": "kuronomics:block/shop_creative_back",
+    "west": "kuronomics:block/shop_creative_right",
+    "particle": "kuronomics:block/shop_creative_bottom"
+  },
+  "render_type": "solid"
+}

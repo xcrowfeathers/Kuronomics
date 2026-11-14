@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "kuronomics:id_checker",
+    "kuronomics:atm_block"
+  ]
+}

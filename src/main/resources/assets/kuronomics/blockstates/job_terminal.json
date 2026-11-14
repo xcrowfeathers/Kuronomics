@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=north": { "model": "kuronomics:block/job_terminal" },
+    "facing=east":  { "model": "kuronomics:block/job_terminal", "y": 90 },
+    "facing=south": { "model": "kuronomics:block/job_terminal", "y": 180 },
+    "facing=west":  { "model": "kuronomics:block/job_terminal", "y": 270 }
+  }
+}
+

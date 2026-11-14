@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "kuronomics:block/atm_block"
+    },
+    "facing=east": {
+      "model": "kuronomics:block/atm_block",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "kuronomics:block/atm_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "kuronomics:block/atm_block",
+      "y": 270
+    }
+  }
+}

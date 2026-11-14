@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "de.kuro.kuronomics.economy.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["PlayerListSaveAccess", "SavedDataAccess", "FinancialPlayerSave"]
+}

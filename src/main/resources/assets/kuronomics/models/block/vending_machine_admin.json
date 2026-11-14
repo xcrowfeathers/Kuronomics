@@ -1,0 +1,9 @@
+{
+  "parent": "kuronomics:custom/vendingmachinetexcrea",
+  "textures": {
+    "all": "kuronomics:block/textureve_creative",
+    "particle": "kuronomics:block/textureve_creative",
+    "0": "kuronomics:block/textureve_creative"
+  },
+  "render_type": "cutout"
+}

@@ -1,0 +1,137 @@
+plugins {
+    id 'java-library'
+    id 'idea'
+    id 'net.neoforged.moddev' version '2.0.147'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    maven {
+        name = 'LatvianMods'
+        url = 'https://maven.latvian.dev/releases'
+        content { includeGroup 'dev.latvian.mods' }
+    }
+    maven {
+        url = 'https://maven.enginehub.org/repo/'
+        metadataSources { mavenPom(); artifact(); ignoreGradleMetadataRedirection() }
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Modrinth'
+                url = 'https://api.modrinth.com/maven'
+            }
+        }
+        filter { includeGroup 'maven.modrinth' }
+    }
+}
+
+configurations {
+    localRuntime
+}
+sourceSets.main.runtimeClasspath += configurations.localRuntime
+sourceSets {
+    taskAddonExample {
+        java.srcDirs = ['examples/task-addon', 'examples/framework']
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+    }
+    verification {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+
+// Override for CI or a separate checkout. Neither mod nor Core is bundled into Kuronomy.
+def worldguardPort = files(providers.gradleProperty('worldguardPortJar').getOrElse(
+        '../World Guard/build/libs/worldguard-7.0.12-neoforge.jar'))
+dependencies {
+    compileOnly('dev.latvian.mods:kubejs-neoforge:2101.7.2-build.381') { transitive = false }
+    compileOnly 'dev.latvian.mods:rhino:2101.2.7-build.81'
+    if (providers.gradleProperty('withKubeJS').isPresent()) {
+        // KubeJS already embeds its non-Rhino libraries via NeoForge Jar-in-Jar metadata.
+        localRuntime('dev.latvian.mods:kubejs-neoforge:2101.7.2-build.381') { transitive = false }
+        localRuntime('dev.latvian.mods:rhino:2101.2.7-build.81') { transitive = false }
+    }
+    compileOnly worldguardPort
+    compileOnly 'com.sk89q.worldguard:worldguard-core:7.0.12'
+    compileOnly 'maven.modrinth:worldedit:WTAFvuRx'
+    if (!providers.gradleProperty('withoutWorldGuard').isPresent()) {
+        localRuntime worldguardPort
+        localRuntime 'maven.modrinth:worldedit:WTAFvuRx'
+    }
+}
+
+neoForge {
+    version = project.neo_version
+    runs {
+        client {
+            client()
+            if (providers.gradleProperty('verificationWorld').isPresent()) {
+                programArgument '--quickPlaySingleplayer'
+                programArgument providers.gradleProperty('verificationWorld').get()
+            }
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+        }
+
+        configureEach {
+            logLevel = org.slf4j.event.Level.INFO
+            if (providers.gradleProperty('verificationRunDir').isPresent()) {
+                gameDirectory = file(providers.gradleProperty('verificationRunDir').get())
+            }
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+        if (providers.gradleProperty('verifyIntegration').isPresent()) {
+            kuronomy_verification { sourceSet(sourceSets.verification) }
+        }
+    }
+}
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [minecraft_version      : minecraft_version,
+                             minecraft_version_range: minecraft_version_range,
+                             neo_version            : neo_version,
+                             neo_version_range      : neo_version_range,
+                             loader_version_range   : loader_version_range,
+                             mod_id                 : mod_id,
+                             mod_name               : mod_name,
+                             mod_license            : mod_license,
+                             mod_version            : mod_version,
+                             mod_authors            : mod_authors,
+                             mod_description        : mod_description]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
+}
+sourceSets.main.resources.srcDir generateModMetadata
+// Compile the addon-style consumer and integration harness on every production build; neither is packaged.
+tasks.named('check') { dependsOn tasks.named('compileVerificationJava'), tasks.named('compileTaskAddonExampleJava') }
+tasks.named('processVerificationResources') {
+    from('examples/job-task-datapack') { into 'fixtures/job-task-datapack' }
+}
+neoForge.ideSyncTask generateModMetadata
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}
+
+

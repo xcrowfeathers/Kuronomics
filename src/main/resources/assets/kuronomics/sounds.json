@@ -1,0 +1,51 @@
+{
+  "atm_print": {
+    "sounds": [
+      {
+        "name": "kuronomics:printatm",
+        "stream": false
+      }
+    ]
+  },
+  "atm_boot": {
+    "sounds": [
+      {
+        "name": "kuronomics:startupatm",
+        "stream": false
+      }
+    ]
+  },
+  "error": {
+    "subtitle": "subtitles.error",
+    "sounds": [
+      {
+        "name": "kuronomics:error",
+        "stream": false
+      }
+    ]
+  },
+  "cashreg": {
+    "sounds": [
+      {
+        "name": "kuronomics:chaching",
+        "stream": false
+      }
+    ]
+  },
+  "id_accept": {
+    "sounds": [
+      {
+        "name": "kuronomics:idcheckeraccept",
+        "stream": false
+      }
+    ]
+  },
+  "id_incorrect": {
+    "sounds": [
+      {
+        "name": "kuronomics:idchecker_incorrect",
+        "stream": false
+      }
+    ]
+  }
+}

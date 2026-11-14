@@ -1,0 +1,57 @@
+{
+  "variants": {
+    "face=floor,facing=north": {
+      "model": "kuronomics:block/printer"
+    },
+    "face=floor,facing=east": {
+      "model": "kuronomics:block/printer",
+      "y": 90
+    },
+    "face=floor,facing=south": {
+      "model": "kuronomics:block/printer",
+      "y": 180
+    },
+    "face=floor,facing=west": {
+      "model": "kuronomics:block/printer",
+      "y": 270
+    },
+    "face=wall,facing=north": {
+      "model": "kuronomics:block/printer",
+      "x": 90
+    },
+    "face=wall,facing=east": {
+      "model": "kuronomics:block/printer",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "kuronomics:block/printer",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "kuronomics:block/printer",
+      "x": 90,
+      "y": 270
+    },
+    "face=ceiling,facing=north": {
+      "model": "kuronomics:block/printer",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=east": {
+      "model": "kuronomics:block/printer",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=south": {
+      "model": "kuronomics:block/printer",
+      "x": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "kuronomics:block/printer",
+      "x": 180,
+      "y": 90
+    }
+  }
+}

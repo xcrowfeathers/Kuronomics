@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "kuronomics:block/company_shop"
+    },
+    "facing=east": {
+      "model": "kuronomics:block/company_shop",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "kuronomics:block/company_shop",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "kuronomics:block/company_shop",
+      "y": 270
+    }
+  }
+}

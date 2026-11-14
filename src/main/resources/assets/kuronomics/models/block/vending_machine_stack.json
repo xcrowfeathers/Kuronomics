@@ -1,0 +1,9 @@
+{
+  "parent": "kuronomics:custom/vendingmachinetexstack",
+  "textures": {
+    "all": "kuronomics:block/textureve_stack",
+    "particle": "kuronomics:block/textureve_stack",
+    "0": "kuronomics:block/textureve_stack"
+  },
+  "render_type": "cutout"
+}

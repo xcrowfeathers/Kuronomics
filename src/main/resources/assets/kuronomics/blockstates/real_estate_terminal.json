@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "kuronomics:block/real_estate_terminal" },
+    "facing=east":  { "model": "kuronomics:block/real_estate_terminal", "y": 90 },
+    "facing=south": { "model": "kuronomics:block/real_estate_terminal", "y": 180 },
+    "facing=west":  { "model": "kuronomics:block/real_estate_terminal", "y": 270 }
+  }
+}

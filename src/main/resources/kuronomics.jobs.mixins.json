@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "de.kuro.kuronomics.jobs.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["TamingMixin", "HorseTamingMixin", "ShearingMixin", "HarvestMixin", "MiningMixin", "PlacementMixin", "CraftingMixin", "SmeltingMixin", "FishingMixin", "DeathMixin", "BreedingMixin", "InteractionMixin"]
+}

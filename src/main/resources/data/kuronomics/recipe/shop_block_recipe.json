@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "cdc"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:light_blue_wool"
+    },
+    "b": {
+      "item": "minecraft:white_wool"
+    },
+    "c": {
+      "tag": "minecraft:logs"
+    },
+    "d": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "id": "kuronomics:shop_block",
+    "count": 1
+  }
+}

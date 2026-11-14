@@ -1,0 +1,9 @@
+{
+  "parent": "kuronomics:custom/atmb",
+  "textures": {
+    "all": "kuronomics:block/fdsfsdfsdf",
+    "particle": "kuronomics:block/fdsfsdfsdf",
+    "0": "kuronomics:block/fdsfsdfsdf"
+  },
+  "render_type": "solid"
+}

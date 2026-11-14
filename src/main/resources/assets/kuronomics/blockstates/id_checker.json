@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,blockstate=0": {
+      "model": "kuronomics:block/id_checker"
+    },
+    "facing=east,blockstate=0": {
+      "model": "kuronomics:block/id_checker",
+      "y": 90
+    },
+    "facing=south,blockstate=0": {
+      "model": "kuronomics:block/id_checker",
+      "y": 180
+    },
+    "facing=west,blockstate=0": {
+      "model": "kuronomics:block/id_checker",
+      "y": 270
+    },
+    "facing=north,blockstate=1": {
+      "model": "kuronomics:block/id_checker_powered"
+    },
+    "facing=east,blockstate=1": {
+      "model": "kuronomics:block/id_checker_powered",
+      "y": 90
+    },
+    "facing=south,blockstate=1": {
+      "model": "kuronomics:block/id_checker_powered",
+      "y": 180
+    },
+    "facing=west,blockstate=1": {
+      "model": "kuronomics:block/id_checker_powered",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "kuronomics:custom/passcheckcomputer",
+  "textures": {
+    "all": "kuronomics:block/texturepasscheckerv2",
+    "particle": "kuronomics:block/texturepasscheckerv2",
+    "0": "kuronomics:block/texturepasscheckerv2"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    { "item": "kuronomics:shop_block" },
+    { "item": "minecraft:paper" }
+  ],
+  "result": { "id": "kuronomics:company_shop", "count": 1 }
+}

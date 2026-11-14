@@ -1,0 +1,1 @@
+de.kuro.kuronomics.integration.kubejs.KuronomyKubeJSPlugin

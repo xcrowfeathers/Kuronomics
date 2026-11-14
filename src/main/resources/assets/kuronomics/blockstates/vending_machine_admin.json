@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "kuronomics:block/vending_machine_admin"
+    },
+    "facing=east": {
+      "model": "kuronomics:block/vending_machine_admin",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "kuronomics:block/vending_machine_admin",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "kuronomics:block/vending_machine_admin",
+      "y": 270
+    }
+  }
+}

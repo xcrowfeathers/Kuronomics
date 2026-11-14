@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "kuronomics:block/idchecker_side",
+    "up": "kuronomics:block/idchecker_side",
+    "north": "kuronomics:block/idchecker_front_powered",
+    "east": "kuronomics:block/idchecker_side",
+    "south": "kuronomics:block/idchecker_side",
+    "west": "kuronomics:block/idchecker_side",
+    "particle": "kuronomics:block/idchecker_side"
+  },
+  "render_type": "solid"
+}
