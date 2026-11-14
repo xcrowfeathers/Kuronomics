@@ -1,0 +1,7 @@
+{
+  "type": "kuronomics:craft_item",
+  "job": "miner",
+  "config": { "target": "minecraft:torch" },
+  "reward": 0.25,
+  "max_gain_per_payday": 5
+}

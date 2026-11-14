@@ -1,0 +1,9 @@
+{
+  "type": "kuronomics:break_block",
+  "job": "miner",
+  "config": { "target": "#minecraft:coal_ores" },
+  "reward": 1.50,
+  "max_gain_per_payday": 15,
+  "natural_only": true,
+  "required_tool_tag": "minecraft:pickaxes"
+}
