@@ -29,25 +29,71 @@ your areas **IF** you used versions prior 5.0.
 
 With that said, I recommend installing WorldEdit and this WorldGuard port along my economy mod!
 
-## API
+## API, Datapacks & KubeJS
 
-5.0 introduces a public API, datapack and script support via kube-js.  
-You can look at my [GitHub](https://github.com/xcrowfeathers/Kuronomics) for examples and how to use the API.
+5.0 introduces a public API, datapack and script support via kube-js. Examples and documentation down below.
 
-## Known incompatibilities
+For now, Kuronomy supports Java mod addons, datapack job tasks, and KubeJS scripting.
 
-Currently no known incompatibilities.
+### Java API
 
-## Q/A
+For developers connecting another mod to Kuronomy.
 
-### Q: How does this mod perform on larger scales? (5.0 and later)
-**A:** This mod is written with large-scale performance as a priority. According to tests and estimates, this mod should perform very well even on large scale servers. However, 5.0 is a beta after all, so please report poor performance or lag spikes to me in the comments or GitHub!
+**Possibilities are:** query balances, transfer or reserve money, manage authorized company ranks/salaries and contracts, read job/property information, listen for economy events, and register custom job task types.
 
-### Q: Backport to version XY?  
-**A:** No. I will however do releases for newer versions later on.
+Compile against the Kuronomy JAR and add `kuronomics` as a mod dependency. Access the API through `de.kuro.kuronomics.api.KuronomyApi`.
 
-### Q: Modloader XY?  
-**A:** NeoForge will stay the only supported modloader.
+```java
+var economy = KuronomyApi.economy(server);
+boolean affordable = economy.canAfford(
+    EconomyApi.player(player.getUUID()), 500L
+);
+```
 
-### Q: Do you accept requests for items and features?  
-**A:** Sure! You can always submit feature requests and ideas.
+This checks whether the player can afford **$5**. API calls run on the server thread, money amounts use **integer cents**, NOT whole values!  
+[Example addon](examples/framework/FrameworkAddon.java)
+
+### Datapacks
+
+Add tasks to existing **task-based jobs** without writing Java. Supported actions include mining, farming, crafting, smelting, fishing, deliveries, and animal care.
+
+Place task files inside a datapack at:
+
+```text
+data/<namespace>/kuronomics/job_tasks/<name>.json
+```
+
+Example mining bonus:
+
+```json
+{
+  "type": "kuronomics:break_block",
+  "job": "miner",
+  "config": { "target": "minecraft:coal_ore" },
+  "reward": 1.50,
+  "max_gain_per_payday": 15,
+  "natural_only": true
+}
+```
+
+Awards **$1.50 per natural coal ore**, capped at **$15 per payday period**. Datapack money values use whole**dollars**, unlike java addons.
+
+Jobs are still configured in `economy_jobs.toml`. Datapack rewards add to matching tasks. Entirely new action types need a Java addon.
+
+[Example pack](examples/job-task-datapack)
+
+### KubeJS — Optional
+
+Use **`Kuronomy`** to query balances, jobs and company permissions, and perform payments/ money reservations. Use **`KuronomyEvents`** to react to paydays, transactions, job changes, task completion, contracts, and property changes.
+
+```javascript
+KuronomyEvents.playerPayday(event => {
+  console.info('Payday finished for ' + event.data.player())
+})
+```
+
+KubeJS payment amounts use **cent strings**: `"500"` means **$5**, like java addons.
+
+Payments need existing funds and normal permissions. Queue followUp money actions from Kuronomy event handlers with `Kuronomy.defer(...)`.
+
+[Example script](examples/kubejs/server_scripts/kuronomy_example.js)
